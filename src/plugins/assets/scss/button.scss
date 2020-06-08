@@ -1,0 +1,102 @@
+/* SCSS 声明样式变量(局部) */
+$default: #333;
+$light-gray: #ddd;
+$success: #07c160;
+$error: #ee0a24;
+$info: #1989fa;
+$warning: #ff976a;
+$white: #fff;
+$black: #000;
+
+
+/* SCSS @mixin 声明样式块函数, @include 执行样式块函数 */
+/* SCSS @function 声明样式值函数, @return 执行样式值函数 */
+@mixin btn-type($color, $bgColor) {
+  color: $color;
+  background-color: $bgColor;
+
+  &:hover {
+    background-color: lighten($bgColor, 5%);
+  }
+  
+  &:active {
+    background-color: darken($bgColor, 2%);
+  }
+
+  &:disabled {
+    &:hover,
+    &:active {
+      color: #999999;
+      background-color: #eeeeee;
+    }
+  }
+}
+
+.do-button {
+  box-sizing: border-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid $light-gray;
+  height: 30px;
+  text-align: center;
+  line-height: 1.2;
+  font-size: 14px;
+  color: $default;
+  cursor: pointer;
+  outline: none;
+
+  &:disabled {
+    color: #999999;
+    background-color: #eeeeee;
+    cursor: not-allowed;
+  }
+
+  &-default {
+    @include btn-type($default, $light-gray);
+    background-color: $white;
+  }
+
+  &-success {
+    @include btn-type($white, $success);
+  }
+
+  &-error {
+    @include btn-type($white, $error);
+  }
+
+  &-warning {
+    @include btn-type($white, $warning);
+  }
+
+  &-info {
+    @include btn-type($white, $info);
+  }
+
+  &-small {
+    padding: 0 5px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  &-medium {
+    padding: 0 20px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  &-large {
+    padding: 0 28px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  &-circle {
+    border-radius: 40px;
+  }
+
+  &-rectangle {
+    border-radius: 0;
+  }
+}
