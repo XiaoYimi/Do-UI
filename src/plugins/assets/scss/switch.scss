@@ -1,0 +1,83 @@
+$default: #6dabff;
+$red: #ee0a24;
+$orange: #ff976a;
+$yellow: #fcff55;
+$green: #07c160;
+$cyan: #62ffff;
+$blue: #1989fa;
+$violet: #ff94ff;
+$ban: #ddd;
+$white: #fff;
+$black: #000;
+
+
+@mixin swith-on ($bgColor) {
+  background-color: $bgColor;
+
+  & .do-switch-block {
+    transform: translateX(1em);
+  }
+}
+
+.switch-box {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  .left-text {
+    margin-right: 5px;
+
+    &-on { color: $default; }
+    &-disabled { color: $ban; }
+  }
+  .right-text {
+    margin-left: 5px;
+  
+    &-on { color: $default; }
+    &-disabled { color: $ban; }
+  }
+
+  .do-switch {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: .5em;
+    width: 2em;
+    height: 1em;
+    font-size: 24px;
+    background-color: #dcdfe6;
+    cursor: pointer;
+  
+    .do-switch-block {
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: .5em;
+      width: 1em;
+      height: 1em;
+      background-color: #fff;
+      transition: transform .3s;
+    }
+
+    &-default { @include swith-on($default); }
+    &-red { @include swith-on($red); }
+    &-orange { @include swith-on($orange); }
+    &-yellow { @include swith-on($yellow); }
+    &-green { @include swith-on($green); }
+    &-cyan { @include swith-on($cyan); }
+    &-blue { @include swith-on($blue); }
+    &-violet { @include swith-on($violet); }
+
+    &-small { font-size: 20px; }
+    &-medium { font-size: 28px; }
+    &-large { font-size: 32px; }
+
+    &-disabled {
+      cursor: not-allowed;
+      background-color: $ban;
+    }
+  }
+}
+
+
+
+
+

@@ -28,12 +28,12 @@ export default {
   },
   computed: {
     btnClass () {
-      const { shape, type, size } = this
+      const { shape, type, size, originClass } = this
       return [
-        this.originClass,
-        type ? this.originClass + '-' + type : this.originClass + '-' + 'default',
-        size ? this.originClass + '-' + size : '',
-        shape ? this.originClass + '-' + shape : ''
+        originClass,
+        type ? originClass + '-' + type : originClass + '-' + 'default',
+        size ? originClass + '-' + size : '',
+        shape ? originClass + '-' + shape : ''
       ]
     }
   }

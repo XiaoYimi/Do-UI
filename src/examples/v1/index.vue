@@ -4,7 +4,7 @@
     <header class="fixed-top header">
       <div class="logo">Do UI</div>
       <div class="flex-full xs-hide search">
-        <input type="search" placeholder="搜索文档" class="input-search">
+        <input type="search" placeholder="搜索文档(后期做帅选)" class="input-search">
       </div>
       <div class="options xs-hide">
         <select name="version" id="version" @change="SelectVersion">
@@ -105,7 +105,7 @@
                 <do-button disabled>禁用按钮</do-button>
               </div>
               <div class="example-instance-source">
-                &lt;do-button disabled&gt;禁用按钮&lt;/do-button&gt;
+                &lt;do-button :disabled="true"&gt;禁用按钮&lt;/do-button&gt;
                 
               </div>
               <div class="example-instance-tip">
@@ -172,8 +172,8 @@
               <tbody>
                 <tr>
                   <td>click</td>
-                  <td>点击事件</td>
-                  <td>自定义接收值</td>
+                  <td>按钮点击</td>
+                  <td>event</td>
                 </tr>
               </tbody>
             </table>
@@ -221,6 +221,24 @@
               </div>
               <div class="example-instance-tip">
                 链接类型(<code>underline</code>)支持 <code>Boolean</code> 类型值, 无默认设置.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">链接状态</div>
+              <div class="example-instance-column">
+                <do-link disabled>默认链接</do-link>
+                <do-link type="success" disabled>成功链接</do-link>
+                <do-link type="error" disabled>失败链接</do-link>
+                <do-link type="warning" disabled>警告链接</do-link>
+                <do-link type="info" disabled>信息链接</do-link>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-link type="success" :disabled="true"&gt;禁用链接&lt;/do-link&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                链接类型(<code>disabled</code>)支持 <code>Boolean</code> 类型值, 无默认设置.
               </div>
             </section>
           </template>
@@ -271,6 +289,174 @@
           </template>
         </temp>
 
+        <temp id="compSwitch" comp-title="Switch 开关">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Switch } from 'do-ui';
+
+            Vue.use(Switch);
+          </template>
+
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Switch 类型</div>
+              <div class="example-instance-column">
+                <do-switch/>
+                <do-switch type="red"/>
+                <do-switch type="orange"/>
+                <do-switch type="yellow"/>
+                <do-switch type="green"/>
+                <do-switch type="cyan"/>
+                <do-switch type="blue"/>
+                <do-switch type="violet"/>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-switch type="green"/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                链接类型(<code>type</code>)支持 <code>default</code>, <code>red</code>, <code>orange</code>, <code>yellow</code>, <code>green</code>, <code>cyan</code>, <code>blue</code>, <code>violet</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Switch 大小</div>
+              <div class="example-instance-column">
+                <do-switch size="small"/>
+                <do-switch/>
+                <do-switch size="medium"/>
+                <do-switch size="large"/>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-switch size="small"/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                链接类型(<code>type</code>)支持 <code>default</code>, <code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Switch 默认状态</div>
+              <div class="example-instance-column">
+                <do-switch :value="true"/>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-switch :value="true"/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Switch 默认状态(<code>value</code>)支持<code>Boolean</code>类型值 等, 无默认设置.
+              </div>
+            </section>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Switch 文本提示</div>
+              <div class="example-instance-column">
+                <do-switch left-text="按年收费" right-text="按月收费"/>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-switch left-text="按年收费" right-text="按月收费"/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Switch 默认状态(<code>value</code>)支持<code>Boolean</code>类型值 等, 无默认设置.
+              </div>
+            </section>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Switch 禁用状态</div>
+              <div class="example-instance-column">
+                <do-switch left-text="关闭" right-text="开启" :disabled="true" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-switch left-text="关闭" right-text="开启" :disabled="true"/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Switch 禁用状态(<code>disabled</code>)支持<code>Boolean</code>类型值 等, 无默认设置.
+              </div>
+            </section>
+          </template>
+
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>type</td>
+                  <td>switch 类型</td>
+                  <td>String</td>
+                  <td>default, red, orange, yellow, green, cyan, blue, violet</td>
+                  <td>default</td>
+                </tr>
+                <tr>
+                  <td>size</td>
+                  <td>switch 大小</td>
+                  <td>String</td>
+                  <td>small, medium, large</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>switch 状态</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>leftText</td>
+                  <td>switch 左边文本提示</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>rightText</td>
+                  <td>switch 右边文本提示</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>disabled</td>
+                  <td>是否禁用</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Events</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>toggle</td>
+                  <td>切换状态</td>
+                  <td>{value}</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </temp>
+
+
+
       </section>
     </div>
 
@@ -298,7 +484,8 @@ export default {
           title: '基础组件',
           column: [
             { name: 'Button 按钮', href: '#compButton' },
-            { name: 'Link 文字链接', href: '#compLink' }
+            { name: 'Link 文字链接', href: '#compLink' },
+            { name: 'Switch 开关', href: '#compSwitch' }
           ]
         }
       ],
