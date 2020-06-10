@@ -5,13 +5,13 @@ Vue.use(Router)
 const { createRouters } = require('../utils/Create')
 
 // // 引入模板文件
-const examples = require('@/examples/1.0.0/index')
+const examples = require('@/examples/v1/index')
 
-const routes_1_0_0 = createRouters(examples, '1.0.0')
+const routes_v1 = createRouters(examples, 'v1')
 
 const router = new Router({
   routes: [
-    ...routes_1_0_0
+    ...routes_v1
   ]
 })
 

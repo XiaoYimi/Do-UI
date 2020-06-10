@@ -1,0 +1,58 @@
+$default: #333;
+$success: #07c160;
+$error: #ee0a24;
+$info: #1989fa;
+$warning: #ff976a;
+
+
+@mixin link-type($color) {
+  color: $color;
+
+  &:hover {
+    color: lighten($color, 5%);
+    text-decoration: underline;
+  }
+
+  &:active { color: darken($color, 2%); }
+
+  &:disabled {
+    cursor: not-allowed;
+    &:hover,
+    &:active {
+      color: $color;
+    }
+  }
+
+
+}
+
+.link-class {
+  color: $default;
+  text-decoration: none;
+  cursor: pointer;
+
+  &-default {
+    @include link-type($default);
+  }
+
+  &-success {
+    @include link-type($success);
+  }
+
+  &-error {
+    @include link-type($error);
+  }
+
+  &-warning {
+    @include link-type($warning);
+  }
+
+  &-info {
+    @include link-type($info);
+  }
+
+  &-underline {
+    text-decoration: underline;
+  }
+
+}

@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 <template>
-  <button @click="hand_btn" :class="btnClass" :disabled="state">
+  <button @click="hand_btn" :class="btnClass" :disabled="disabled">
     <slot> Btn </slot>
   </button>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: 'do-button',
   props: {
     // 按钮状态
-    state: { type: Boolean, default: false },
+    disabled: Boolean,
     // 按钮形状(圆角|直角)
     shape: { type: String, validator: v => (['circle', 'rectangle'].filter(item => item === v)).length },
     // 按钮类型 (success 成功, error 失败, info 信息, warning 警告)

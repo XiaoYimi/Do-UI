@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+
     <header class="fixed-top header">
       <div class="logo">Do UI</div>
       <div class="flex-full xs-hide search">
@@ -7,15 +8,17 @@
       </div>
       <div class="options xs-hide">
         <select name="version" id="version" @change="SelectVersion">
-          <option value="1.0.0">1.0.0</option>
-          <option value="2.0.0">2.0.0</option>
+          <option value="v1">v1</option>
+          <option value="v2">v2</option>
         </select>
       </div>
       <div class="flex-full box-menu">
         <span class="menu"><i/></span>
       </div>
     </header>
+
     <div class="body">
+
       <aside :class="asideClass">
         <div v-for="(block, bid) of asideObj" :key="bid">
           <div class="block-title">{{ block.title }}</div>
@@ -24,6 +27,7 @@
           </div>
         </div>
       </aside>
+
       <section class="sub-body">
         <div id="introduce">
           introduce
@@ -34,19 +38,15 @@
         <div id="updateLog">
           updateLog
         </div>
-        <div id="compBuuton">
-          <h2>BUtton 按钮</h2>
-          <div class="example-title">引入</div>
-          <div class="example-code">
+
+        <temp id="compButton" comp-title="Button 按钮">
+          <template v-slot:install>
             import Vue from 'vue';
             import { Button } from 'do-ui';
 
             Vue.use(Button);
-
-          </div>
-          <div class="example-title">代码演示</div>
-          <div class="example-instance">
-            
+          </template>
+          <template v-slot:demonstration>
             <section class="example-instance-block">
               <div class="example-instance-title">按钮类型</div>
               <div class="example-instance-column">
@@ -102,30 +102,190 @@
               <div class="example-instance-title">按钮状态</div>
               <div class="example-instance-column">
                 <do-button>普通按钮</do-button>
-                <do-button :state="true">禁用按钮</do-button>
+                <do-button disabled>禁用按钮</do-button>
               </div>
               <div class="example-instance-source">
-                &lt;do-button :state="true"&gt;禁用按钮&lt;/do-button&gt;
+                &lt;do-button disabled&gt;禁用按钮&lt;/do-button&gt;
                 
               </div>
               <div class="example-instance-tip">
-                按钮状态(<code>state</code>)支持 <code>Boolean</code> 值, 默认 <code>false</code>.
+                按钮状态(<code>disabled</code>)支持 <code>Boolean</code> 类型值, 无默认设置.
               </div>
             </section>
-          </div>
-        </div>
+          </template>
+          
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>type</td>
+                  <td>按钮类型</td>
+                  <td>String</td>
+                  <td>default, success, error, warning, info</td>
+                  <td>default</td>
+                </tr>
+                <tr>
+                  <td>size</td>
+                  <td>按钮大小</td>
+                  <td>String</td>
+                  <td>small, medium, large</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>shape</td>
+                  <td>按钮形状</td>
+                  <td>String</td>
+                  <td>circle, rectangle</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>disabled</td>
+                  <td>按钮状态</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Event</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>click</td>
+                  <td>点击事件</td>
+                  <td>自定义接收值</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </temp>
+
+        <temp id="compLink" comp-title="Link 文字链接">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Link } from 'do-ui';
+
+            Vue.use(Link);
+          </template>
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">链接类型</div>
+              <div class="example-instance-column">
+                <do-link>默认链接</do-link>
+                <do-link type="success">成功链接</do-link>
+                <do-link type="error">失败链接</do-link>
+                <do-link type="warning">警告链接</do-link>
+                <do-link type="info">信息链接</do-link>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-link type="success"&gt;成功链接&lt;/do-link&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                链接类型(<code>type</code>)支持 <code>default</code>, <code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">启用下划线</div>
+              <div class="example-instance-column">
+                <do-link underline>默认链接</do-link>
+                <do-link type="success" underline>成功链接</do-link>
+                <do-link type="error" underline>失败链接</do-link>
+                <do-link type="warning" underline>警告链接</do-link>
+                <do-link type="info" underline>信息链接</do-link>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-link type="success" underline &gt;成功链接&lt;/do-link&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                链接类型(<code>underline</code>)支持 <code>Boolean</code> 类型值, 无默认设置.
+              </div>
+            </section>
+          </template>
+
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>href</td>
+                  <td>原生 href</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>type</td>
+                  <td>链接类型</td>
+                  <td>String</td>
+                  <td>default, success, error, warning, info</td>
+                  <td>default</td>
+                </tr>
+                <tr>
+                  <td>underline</td>
+                  <td>是否下划线</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>disabled</td>
+                  <td>是否禁用</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </temp>
+
       </section>
     </div>
+
   </div>
 </template>
  
 <script>
+const Temp = require('./comp/temp').default
+
 export default {
   name: 'index',
+  components: { Temp },
   data () {
     return {
       asideObj: [
-        /* 开发指南 */
         {
           title: '开发指南',
           column: [
@@ -137,7 +297,8 @@ export default {
         {
           title: '基础组件',
           column: [
-            { name: 'Button 按钮', href: '#compBuuton' }
+            { name: 'Button 按钮', href: '#compButton' },
+            { name: 'Link 文字链接', href: '#compLink' }
           ]
         }
       ],
@@ -183,7 +344,9 @@ export default {
       if (to.hash === '') {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
-        const positionTop = document.querySelector(to.hash).offsetTop
+        var positionTop = document.querySelector(to.hash).offsetTop - 65
+        positionTop = positionTop < 0 ? 0 : positionTop
+        
         window.scrollTo({ top: positionTop, behavior: 'smooth' })
       }
     }
