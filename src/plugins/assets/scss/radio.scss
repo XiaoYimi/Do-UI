@@ -1,0 +1,69 @@
+$defFontColor: #333;
+$default: #6dabff;
+$red: #ee0a24;
+$orange: #ff976a;
+$yellow: #fcff55;
+$green: #07c160;
+$cyan: #62ffff;
+$blue: #1989fa;
+$violet: #ff94ff;
+$ban: #ddd;
+$white: #fff;
+$black: #000;
+
+@mixin radio-color ($borderColor, $bgColor) {
+  input[type=radio]:checked + label {
+    color: $bgColor;
+    &::before {
+      border-color: $borderColor;
+      background-color: $bgColor;
+    }
+  }
+}
+
+.do-radio {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  input[type=radio] { display: none; }
+
+  input[type=radio] + label {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    color: $defFontColor;
+    cursor: pointer;
+
+    &::before {
+      box-sizing: border-box;
+      display: inline-block;
+      margin-right: 4px;
+      border: 1px solid #cacaca;
+      border-radius: .5em;
+      width: 1em;
+      height: 1em;
+      content: '';
+      font-size: 16px;
+      background-color: #ddd;
+    }
+  }
+
+  &-default { @include radio-color($default, $default); }
+  &-red { @include radio-color($red, $red); }
+  &-orange { @include radio-color($orange, $orange); }
+  &-yellow { @include radio-color($yellow, $yellow); }
+  &-green { @include radio-color($green, $green); }
+  &-cyan { @include radio-color($cyan, $cyan); }
+  &-blue { @include radio-color($blue, $blue); }
+  &-violet { @include radio-color($violet, $violet); }
+
+  &-disabled {
+    input[type=radio] + label {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+
+}

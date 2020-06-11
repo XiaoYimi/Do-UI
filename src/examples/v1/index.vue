@@ -39,7 +39,7 @@
           updateLog
         </div>
 
-        <temp id="compButton" comp-title="Button 按钮">
+        <temp id="Button" comp-title="Button 按钮">
           <template v-slot:install>
             import Vue from 'vue';
             import { Button } from 'do-ui';
@@ -180,7 +180,7 @@
           </template>
         </temp>
 
-        <temp id="compLink" comp-title="Link 文字链接">
+        <temp id="Link" comp-title="Link 文字链接">
           <template v-slot:install>
             import Vue from 'vue';
             import { Link } from 'do-ui';
@@ -289,7 +289,7 @@
           </template>
         </temp>
 
-        <temp id="compSwitch" comp-title="Switch 开关">
+        <temp id="Switch" comp-title="Switch 开关">
           <template v-slot:install>
             import Vue from 'vue';
             import { Switch } from 'do-ui';
@@ -455,6 +455,174 @@
           </template>
         </temp>
 
+        <temp id="Radio" comp-title="Radio 单选框">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Radio } from 'do-ui';
+
+            Vue.use(Radio);
+          </template>
+
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Radio 颜色</div>
+              <div class="example-instance-column">
+                <do-radio name="group1" label="Default" text="默认" color="default" @change="getGroupOption" />
+                <do-radio name="group1" label="Red" text="红色" color="red" @change="getGroupOption" />
+                <do-radio name="group1" label="Orange" text="橙色" color="orange" @change="getGroupOption" />
+                <do-radio name="group1" label="Yellow" text="黄色" color="yellow" @change="getGroupOption" />
+                <do-radio name="group1" label="Green" text="绿色" color="green" @change="getGroupOption" />
+                <do-radio name="group1" label="Cyan" text="青色" color="cyan" @change="getGroupOption" />
+                <do-radio name="group1" label="Blue" text="蓝色" color="blue" @change="getGroupOption" />
+                <do-radio name="group1" label="Violet" text="紫色" color="violet" @change="getGroupOption" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-radio color="green"/&gt;
+
+                &lt;script&gt;
+                在 methods 内定义方法
+
+                getGroupOption (obj) {
+                &nbsp;&nbsp; console.log(obj.value) // 输出选中值
+                }
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                单选框颜色(<code>color</code>)支持 <code>default</code>, <code>red</code>, <code>orange</code>, <code>yellow</code>, <code>green</code>, <code>cyan</code>, <code>blue</code>, <code>violet</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Radio 默认值</div>
+              <div class="example-instance-column">
+                <do-radio name="def" label="0" text="Pending" @change="getGroupOption" />
+                <do-radio name="def" label="1" text="Resolved" value="1" @change="getGroupOption" />
+                <do-radio name="def" label="2" text="Rejected" value="2" @change="getGroupOption" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-radio name="def" label="no-ban" text="无默认" value=""/&gt;
+                &lt;do-radio name="def" label="is-ban" text="默认" value="1"/&gt;
+
+                &lt;script&gt;
+                在 methods 内定义方法
+
+                getGroupOption (obj) {
+                &nbsp;&nbsp; console.log(obj.value) // 输出选中值
+                }
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                单选框默认值(<code>value</code>): 只有<code>label</code> 与 <code>value</code> 相等;当多个单选框同时设置,以<code>最后一个</code>为基准设置.无默认设置.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Radio 禁用</div>
+              <div class="example-instance-column">
+                <do-radio name="ban" label="no-ban" text="未禁" @change="getGroupOption" />
+                <do-radio name="ban" label="is-ban" text="禁止" :disabled="true" @change="getGroupOption" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-radio name="ban" label="0" text="未禁"/&gt;
+                &lt;do-radio name="ban" label="1" text="禁止" :disabled="true"/&gt;
+
+                &lt;script&gt;
+                在 methods 内定义方法
+
+                getGroupOption (obj) {
+                &nbsp;&nbsp; console.log(obj.value) // 输出选中值
+                }
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                单选框禁用(<code>disabled</code>)支持 <code>Boolean</code>类型值.无默认设置.
+              </div>
+            </section>
+          </template>
+
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>name</td>
+                  <td>原生 name</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>原生 value</td>
+                  <td>String, Number, Value</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>text</td>
+                  <td>显示的文本</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>选中值,必须与label一致</td>
+                  <td>String, Number, Value</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>disabled</td>
+                  <td>是否禁用</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>color</td>
+                  <td>单选框颜色</td>
+                  <td>String</td>
+                  <td>default, red, orange, yellow, green, cyan, blue, violet</td>
+                  <td>default</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Events</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>change</td>
+                  <td>切换选项</td>
+                  <td>{value}</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+        </temp>
 
 
       </section>
@@ -483,16 +651,33 @@ export default {
         {
           title: '基础组件',
           column: [
-            { name: 'Button 按钮', href: '#compButton' },
-            { name: 'Link 文字链接', href: '#compLink' },
-            { name: 'Switch 开关', href: '#compSwitch' }
+            { name: 'Button 按钮', href: '#Button' },
+            { name: 'Link 文字链接', href: '#Link' },
+            { name: 'Switch 开关', href: '#Switch' },
+            { name: 'Radio 单选框', href: '#Radio' }
           ]
         }
       ],
-      asideState: false
+      asideState: false,
+
+      /* Radio Args */
+      radioOption: 'Male' 
+
+
+
     };
   },
   methods: {
+
+    /* Radio Events */
+    getGroupOption (obj) {
+      console.log(obj)
+      this.radioOption = obj.value
+    },
+
+
+
+
     listenWinClick (e) {
       const target = e.target
       const state = target.classList.contains('menu') || target.parentElement.classList.contains('menu')

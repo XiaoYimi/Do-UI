@@ -6,6 +6,7 @@
  
 <script>
 export default {
+  name: 'od-link',
   props: {
     href: String,
     type: {

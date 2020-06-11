@@ -19,6 +19,7 @@
  
 <script>
 export default {
+  name: 'do-switch',
   props: {
     type: {
       type: String,

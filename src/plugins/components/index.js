@@ -9,9 +9,12 @@ const Link = require('./link/index.vue')
 /* switch 开关 */
 const Switch = require('./switch/index.vue')
 
+const Radio = require('./radio/index.vue')
+
 
 module.exports = {
   Button,
   Link,
-  Switch
+  Switch,
+  Radio
 }
