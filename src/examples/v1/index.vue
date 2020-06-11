@@ -29,14 +29,33 @@
       </aside>
 
       <section class="sub-body">
-        <div id="introduce">
-          introduce
+        <div id="introduce" class="sub-body-item">
+          <div class="sub-body-item-title">介绍</div>
+          <div class="sub-body-item-content">
+            一款轻量、可靠、高质量的 Vue 组件库,支持按需引入.
+          </div>
         </div>
-        <div id="quickUse">
-          quickUse
+        <div id="quickUse" class="sub-body-item">
+          <div class="sub-body-item-title">快速上手</div>
+          <div class="sub-body-item-content">
+            <section>
+              <h3>安装</h3>
+              <div>npm i do-ui -S</div>
+            </section>
+            <section>
+              <h3>按需引入</h3>
+              <div>import Vue from 'vue'
+                import { Button } from 'do-ui'
+                Vue.use(Button)
+              </div>
+            </section>
+          </div>
         </div>
-        <div id="updateLog">
-          updateLog
+        <div id="updateLog" class="sub-body-item">
+          <div class="sub-body-item-title">更新日志</div>
+          <div class="sub-body-item-content">
+            请点击前往<a :href="'/#' + $route.path.replace('index', 'log')">日志更新列表</a>查看.
+          </div>
         </div>
 
         <temp id="Button" comp-title="Button 按钮">
@@ -706,6 +725,8 @@ export default {
     }
   },
   created() {
+
+    console.log(this.$route)
     // 在手机类型设备点击菜单按钮进行弹出菜单栏
     window.addEventListener('click', this.listenWinClick, true)
     window.addEventListener('resize', this.listenWinScreen, true)

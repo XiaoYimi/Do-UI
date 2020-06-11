@@ -125,6 +125,34 @@
 
   .sub-body {
     width: 100%;
+
+    .sub-body-item {
+      margin-bottom: 40px;
+      font-size: 14px;
+
+      .sub-body-item-title {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .sub-body-item-content {
+        h3 { font-weight: bold; }
+        div {
+          border-radius: 8px;
+          padding: 10px;
+          line-height: 1.5;
+          font-weight: bold;
+          white-space: pre-line;
+          background-color: #e0edff;
+        }
+        a {
+          text-decoration: none;
+          color: #ff976a;
+        }
+      }
+    }
+
   }
 }
 
