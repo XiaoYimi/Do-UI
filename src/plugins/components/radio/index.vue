@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     checkedOption () {
-      if (!this.disabled) { this.$emit('change', { value: this.label }) }
+      const { disabled, name, label, radioId } = this
+      if (!disabled) { this.$emit('change', { group: name, radioId, value: label }) }
     }
   },
   computed: {

@@ -9,12 +9,16 @@ const Link = require('./link/index.vue')
 /* switch 开关 */
 const Switch = require('./switch/index.vue')
 
+/* 单选框 */
 const Radio = require('./radio/index.vue')
 
+/* 复选框 */
+const Checkbox = require('./checkbox/index.vue')
 
 module.exports = {
   Button,
   Link,
   Switch,
-  Radio
+  Radio,
+  Checkbox
 }

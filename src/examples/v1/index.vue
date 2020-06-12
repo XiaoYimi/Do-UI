@@ -496,7 +496,7 @@
                 <do-radio name="group1" label="Violet" text="紫色" color="violet" @change="getGroupOption" />
               </div>
               <div class="example-instance-source">
-                &lt;do-radio color="green"/&gt;
+                &lt;do-radio name="group1" label="Green" color="green" @change="getGroupOption"/&gt;
 
                 &lt;script&gt;
                 在 methods 内定义方法
@@ -520,8 +520,8 @@
                 <do-radio name="def" label="2" text="Rejected" value="2" @change="getGroupOption" />
               </div>
               <div class="example-instance-source">
-                &lt;do-radio name="def" label="no-ban" text="无默认" value=""/&gt;
-                &lt;do-radio name="def" label="is-ban" text="默认" value="1"/&gt;
+                &lt;do-radio name="def" label="no-ban" text="无默认" value="no-ban" @change="getGroupOption"/&gt;
+                &lt;do-radio name="def" label="is-ban" text="默认" value="is-ban" @change="getGroupOption"/&gt;
 
                 &lt;script&gt;
                 在 methods 内定义方法
@@ -544,8 +544,8 @@
                 <do-radio name="ban" label="is-ban" text="禁止" :disabled="true" @change="getGroupOption" />
               </div>
               <div class="example-instance-source">
-                &lt;do-radio name="ban" label="0" text="未禁"/&gt;
-                &lt;do-radio name="ban" label="1" text="禁止" :disabled="true"/&gt;
+                &lt;do-radio name="ban" label="0" text="未禁" @change="getGroupOption"/&gt;
+                &lt;do-radio name="ban" label="1" text="禁止" :disabled="true" @change="getGroupOption"/&gt;
 
                 &lt;script&gt;
                 在 methods 内定义方法
@@ -598,7 +598,7 @@
                 </tr>
                 <tr>
                   <td>value</td>
-                  <td>选中值,必须与label一致</td>
+                  <td>默认选中值,必须与label一致</td>
                   <td>String, Number, Value</td>
                   <td>--</td>
                   <td>--</td>
@@ -635,7 +635,7 @@
                 <tr>
                   <td>change</td>
                   <td>切换选项</td>
-                  <td>{value}</td>
+                  <td>{group, radioId, value}</td>
                 </tr>
               </tbody>
             </table>
@@ -643,6 +643,210 @@
 
         </temp>
 
+        <temp id="Checkbox" comp-title="Checkbox 复选框">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Checkbox } from 'do-ui';
+
+            Vue.use(Checkbox);
+          </template>
+
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Checkbox 颜色</div>
+              <div class="example-instance-column">
+                <do-checkbox name="cg1" label="default" color="default" text="Default" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="red" color="red" text="Red" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="orange" color="orange" text="Orange" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="yellow" color="yellow" text="Yellow" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="green" color="green" text="Green" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="cyan" color="cyan" text="Cyan" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="blue" color="blue" text="Blue" @change="checkboxChange" />
+                <do-checkbox name="cg1" label="violet" color="violet" text="Violet" @change="checkboxChange" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-checkbox name="cg1" label="red" text="Red" color="red" @change="checkboxChange"/&gt;
+                &lt;do-checkbox name="cg1" label="orange" text="Orange" color="orange" @change="checkboxChange"/&gt;
+                &lt;do-checkbox name="cg1" label="green" text="Green" color="green" @change="checkboxChange"/&gt;
+
+                &lt;script&gt;
+
+                在 data 对象定义属性
+
+                checkboxOption: []
+
+                在 methods 内定义方法
+
+                checkboxChange (obj) {
+                &nbsp;  &nbsp;  const { value, state } = obj
+                &nbsp;  &nbsp;   if (state) {
+                &nbsp;  &nbsp;&nbsp;  &nbsp;    this.checkboxOption.push(value)
+                &nbsp;  &nbsp;  } else {
+                &nbsp;  &nbsp;&nbsp;  &nbsp;    this.checkboxOption = this.checkboxOption.filter(item => item !== value)
+                &nbsp;  &nbsp;  }
+                &nbsp;  &nbsp; console.log(this.checkboxOption) /* checkbox 选中值列表 */
+                },
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                复选框颜色(<code>color</code>)支持 <code>default</code>, <code>red</code>, <code>orange</code>, <code>yellow</code>, <code>green</code>, <code>cyan</code>, <code>blue</code>, <code>violet</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Checkbox 默认值</div>
+              <div class="example-instance-column">
+                <do-checkbox name="cg2" label="dog" text="Dog" @change="checkboxChange" />
+                <do-checkbox name="cg2" label="cat" value="cat" text="Cat" @change="checkboxChange" />
+                <do-checkbox name="cg2" label="rabbit" value="rabbit" text="Rabbit" @change="checkboxChange" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-checkbox name="cg2" label="dog" text="Dog" @change="checkboxChange"/&gt;
+                &lt;do-checkbox name="cg2" label="cat" value="cat" text="Cat" @change="checkboxChange"/&gt;
+                &lt;do-checkbox name="cg2" label="rabbit" value="rabbit" text="Rabbit" @change="checkboxChange"/&gt;
+
+                &lt;script&gt;
+
+                在 data 对象定义属性
+
+                checkboxOption: []
+
+                在 methods 内定义方法
+
+                checkboxChange (obj) {
+                &nbsp;  &nbsp;  const { value, state } = obj
+                &nbsp;  &nbsp;   if (state) {
+                &nbsp;  &nbsp;&nbsp;  &nbsp;    this.checkboxOption.push(value)
+                &nbsp;  &nbsp;  } else {
+                &nbsp;  &nbsp;&nbsp;  &nbsp;    this.checkboxOption = this.checkboxOption.filter(item => item !== value)
+                &nbsp;  &nbsp;  }
+                &nbsp;  &nbsp; console.log(this.checkboxOption) /* checkbox 选中值列表 */
+                },
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                复选框默认值(<code>value</code>): 只有<code>label</code> 与 <code>value</code> 相等;无默认设置.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Checkbox 禁用</div>
+              <div class="example-instance-column">
+                <do-checkbox name="cg3" label="pear" text="Pear" :disabled="true" @change="checkboxChange" />
+                <do-checkbox name="cg3" label="apple" value="apple" text="Apple" :disabled="true" @change="checkboxChange" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-checkbox name="cg3" label="pear" text="Pear" :disabled="true" @change="checkboxChange"/&gt;
+                &lt;do-checkbox name="cg3" label="apple" value="apple" text="Apple" :disabled="true" @change="checkboxChange"/&gt;
+
+                &lt;script&gt;
+
+                在 data 对象定义属性
+
+                checkboxOption: []
+
+                在 methods 内定义方法
+
+                checkboxChange (obj) {
+                &nbsp;  &nbsp;  const { value, state } = obj
+                &nbsp;  &nbsp;   if (state) {
+                &nbsp;  &nbsp;&nbsp;  &nbsp;    this.checkboxOption.push(value)
+                &nbsp;  &nbsp;  } else {
+                &nbsp;  &nbsp;&nbsp;  &nbsp;    this.checkboxOption = this.checkboxOption.filter(item => item !== value)
+                &nbsp;  &nbsp;  }
+                &nbsp;  &nbsp; console.log(this.checkboxOption) /* checkbox 选中值列表 */
+                },
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                复选框禁用(<code>color</code>)支持 <code>Boolean</code> 类型值,无默认设置.
+              </div>
+            </section>
+          </template>
+
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>name</td>
+                  <td>原生 name</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>原生 value</td>
+                  <td>String, Number, Value</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>text</td>
+                  <td>显示的文本</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>默认选中值,必须与label一致</td>
+                  <td>String, Number, Value</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>disabled</td>
+                  <td>是否禁用</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>color</td>
+                  <td>单选框颜色</td>
+                  <td>String</td>
+                  <td>default, red, orange, yellow, green, cyan, blue, violet</td>
+                  <td>default</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Events</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>change</td>
+                  <td>切换选项</td>
+                  <td>{group, checkboxId, value, state}</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        
+        </temp>
 
       </section>
     </div>
@@ -673,14 +877,18 @@ export default {
             { name: 'Button 按钮', href: '#Button' },
             { name: 'Link 文字链接', href: '#Link' },
             { name: 'Switch 开关', href: '#Switch' },
-            { name: 'Radio 单选框', href: '#Radio' }
+            { name: 'Radio 单选框', href: '#Radio' },
+            { name: 'Checkbox 复选框', href: '#Checkbox' }
           ]
         }
       ],
       asideState: false,
 
-      /* Radio Args */
-      radioOption: 'Male' 
+      /* Radio Default */
+      radioOption: 'Male',
+
+      /* Checkbox Default */
+      checkboxOption: []
 
 
 
@@ -694,8 +902,16 @@ export default {
       this.radioOption = obj.value
     },
 
-
-
+    /* Checkbox Events */
+    checkboxChange (obj) {
+      const { value, state } = obj
+      if (state) {
+        this.checkboxOption.push(value)
+      } else {
+        this.checkboxOption = this.checkboxOption.filter(item => item !== value)
+      }
+      console.log(this.checkboxOption) /* checkbox 选中值列表 */
+    },
 
     listenWinClick (e) {
       const target = e.target
@@ -725,8 +941,6 @@ export default {
     }
   },
   created() {
-
-    console.log(this.$route)
     // 在手机类型设备点击菜单按钮进行弹出菜单栏
     window.addEventListener('click', this.listenWinClick, true)
     window.addEventListener('resize', this.listenWinScreen, true)

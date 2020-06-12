@@ -1,0 +1,68 @@
+$defFontColor: #333;
+$default: #6dabff;
+$red: #ee0a24;
+$orange: #ff976a;
+$yellow: #fcff55;
+$green: #07c160;
+$cyan: #62ffff;
+$blue: #1989fa;
+$violet: #ff94ff;
+$ban: #ddd;
+$white: #fff;
+$black: #000;
+
+
+@mixin checkbox-color ($borderColor, $bgColor) {
+  input[type=checkbox] + label {
+    color: $bgColor;
+
+    &::before {
+      border-color: $borderColor;
+      background-color: $bgColor;
+    }
+  }
+}
+
+.do-checkbox {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  input[type=checkbox] { display: none; }
+
+  input[type=checkbox] + label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &::before {
+      box-sizing: border-box;
+      display: inline-block;
+      margin-right: 4px;
+      border: 1px solid #cacaca;
+      border-radius: 2px;
+      width: 1em;
+      height: 1em;
+      content: '';
+      font-size: 16px;
+
+    }
+  }
+
+  &-default { @include checkbox-color($default, $default); }
+  &-red { @include checkbox-color($red, $red); }
+  &-orange { @include checkbox-color($orange, $orange); }
+  &-yellow { @include checkbox-color($yellow, $yellow); }
+  &-green { @include checkbox-color($green, $green); }
+  &-cyan { @include checkbox-color($cyan, $cyan); }
+  &-blue { @include checkbox-color($blue, $blue); }
+  &-violet { @include checkbox-color($violet, $violet); }
+
+  &-disabled { 
+    input[type=checkbox] + label {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+
+}
