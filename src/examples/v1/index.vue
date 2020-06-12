@@ -904,13 +904,14 @@ export default {
 
     /* Checkbox Events */
     checkboxChange (obj) {
+      console.log(obj) /* checkbox 选中值 */
       const { value, state } = obj
       if (state) {
         this.checkboxOption.push(value)
       } else {
         this.checkboxOption = this.checkboxOption.filter(item => item !== value)
       }
-      console.log(this.checkboxOption) /* checkbox 选中值列表 */
+      
     },
 
     listenWinClick (e) {

@@ -91,16 +91,21 @@ export default {
 
 
       .example-api-table {
+        box-sizing: border-box;
         margin-bottom: 40px;
         border-collapse: collapse;
 
         thead, tbody {
           th,
           td {
+            box-sizing: border-box;
             border-bottom: 1px solid #dcdfe6;
-            padding: 15px;
+            padding: 12px;
             max-width: 250px;
             text-align: left;
+
+            &:first-child { padding-left: 0; }
+            &:last-child { padding-right: 0; }
           }
         }
 

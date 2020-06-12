@@ -43,10 +43,7 @@ export default {
   computed: {
     checkboxId () { return 'checkbox_' + Math.random().toString().slice(2,6) },
     checkboxClass () {
-      const { disabled, color, originClass, initload, state, $refs, checkboxId } = this
-
-      console.log(state)
-
+      const { disabled, color, originClass, initload, state, $refs, checkboxId } = this;
       return [
         originClass,
         state && color ? originClass + '-' + color : '',

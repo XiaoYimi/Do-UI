@@ -42,6 +42,16 @@ export default {
           version: '1.3.0',
           content: [ '添加插件 Radio 单选框' ],
           datetime: 1591844520000
+        },
+        {
+          version: '1.4.0',
+          content: [ '添加插件 Checkbox 复选框' ],
+          datetime: 1591930560000
+        },
+        {
+          version: '1.4.1',
+          content: [ '修复移动端页面导航栏内容溢出问题,table 样式导致' ],
+          datetime: 1591932840000
         }
       ]
     };
