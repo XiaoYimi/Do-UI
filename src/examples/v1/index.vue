@@ -839,7 +839,7 @@
               <tbody>
                 <tr>
                   <td>change</td>
-                  <td>切换选项</td>
+                  <td>切换状态</td>
                   <td>{group, checkboxId, value, state}</td>
                 </tr>
               </tbody>
@@ -847,6 +847,113 @@
           </template>
         
         </temp>
+
+        <temp id="Toast" comp-title="Toast 信息">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Toast } from 'do-ui';
+
+            Vue.use(Toast);
+          </template>
+
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Toast 位置</div>
+              <div class="example-instance-column">
+                <do-button @click="toastPosition">Toast 默认(top)</do-button>
+                <do-button @click="toastPosition">Toast 右边(right)</do-button>
+                <do-button @click="toastPosition">Toast 下边(bottom)</do-button>
+                <do-button @click="toastPosition">Toast 左边(left)</do-button>
+                <do-button @click="toastPosition">Toast 中间(center)</do-button>
+              </div>
+              <div class="example-instance-source">
+                &lt;script&gt;
+                  this.$toast({
+                  &nbsp;&nbsp; position: 'top'
+                  })
+                &lt;/script&gt;
+              </div>
+              <div class="example-instance-tip">
+                Toast 位置(<code>position</code>)支持 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>, <code>center</code> 等, 默认 <code>top</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Toast 类型</div>
+              <div class="example-instance-column">
+                <do-button @click="toastType">Toast 默认(default)</do-button>
+                <do-button @click="toastType">Toast 成功(success)</do-button>
+                <do-button @click="toastType">Toast 失败(error)</do-button>
+                <do-button @click="toastType">Toast 警告(warning)</do-button>
+                <do-button @click="toastType">Toast 信息(info)</do-button>
+              </div>
+              <div class="example-instance-source">
+                &lt;script&gt;
+                  this.$toast({
+                  &nbsp;&nbsp; type: 'success'
+                  })
+                &lt;/script&gt;
+              </div>
+              <div class="example-instance-tip">
+                Toast 类型(<code>type</code>)支持 <code>default</code>, <code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Toast 自定义图标</div>
+              <div class="example-instance-column">
+                <do-button @click="toastCustomIcon">Toast 图标自定义</do-button>
+              </div>
+              <div class="example-instance-source">
+                &lt;script&gt;
+                  this.$toast({
+                  &nbsp;&nbsp; isCustomIcon: true,
+                  &nbsp;&nbsp; customIconUrl: 'https://www.baidu.com/img/flexible/logo/pc/result.png'
+                  })
+                &lt;/script&gt;
+              </div>
+              <div class="example-instance-tip">
+                Toast 自定义图标(<code>type</code>)必须同时设置 <code>isCustomIcon</code> 和 <code>customIconUrl</code>,图标建议 <code>16*16</code>, 默认 <code>isCustomIcon</code>为<code>false</code>, <code>customIconUrl</code>为 <code>''</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Toast 显示时间(自动关闭)</div>
+              <div class="example-instance-column">
+                <do-button @click="toastTimeout">Toast 默认(3000)ms</do-button>
+                <do-button @click="toastTimeout">Toast 持久显示(0)ms</do-button>
+              </div>
+              <div class="example-instance-source">
+                &lt;script&gt;
+                  this.$toast({
+                  &nbsp;&nbsp; timeout: 0, // 不自动关闭
+                  })
+                &lt;/script&gt;
+              </div>
+              <div class="example-instance-tip">
+                Toast 显示时间(<code>timeout</code>)可自定义任意数值(ms);设置为<code>0</code>时不会自动关闭,可通过变量存储该实例,通过 实例.hide() 手动关闭,默认 <code>3000</code>ms.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Toast 显示关闭按钮</div>
+              <div class="example-instance-column">
+                <do-button @click="toastCancel">Toast 显示关闭按钮</do-button>
+              </div>
+              <div class="example-instance-source">
+                &lt;script&gt;
+                  this.$toast({
+                  &nbsp;&nbsp; hasCancel: true,
+                  })
+                &lt;/script&gt;
+              </div>
+              <div class="example-instance-tip">
+                Toast 显示关闭按钮(<code>hasCancel</code>)支持<code>Boolean</code>类型值,默认 <code>false</code>.
+              </div>
+            </section>
+          </template>
+        </temp>
+
 
       </section>
     </div>
@@ -879,6 +986,12 @@ export default {
             { name: 'Switch 开关', href: '#Switch' },
             { name: 'Radio 单选框', href: '#Radio' },
             { name: 'Checkbox 复选框', href: '#Checkbox' }
+          ]
+        },
+        {
+          title: 'Vue.prototype 方法',
+          column: [
+            { name: 'Toast 信息', href: '#Toast' }
           ]
         }
       ],
@@ -914,6 +1027,44 @@ export default {
       
     },
 
+    /* Toast Events */
+    toastPosition (e) {
+      const text = e.target.innerText
+      const position = text.match(/\((\S*)\)/)[1]
+      this.$toast({
+        msg: text,
+        position: position
+      })
+    },
+    toastType (e) {
+      const text = e.target.innerText
+      const type = text.match(/\((\S*)\)/)[1]
+      this.$toast({
+        msg: text,
+        type: type
+      })
+    },
+    toastCustomIcon () {
+      this.$toast({
+        isCustomIcon: true,
+        customIconUrl: 'https://www.baidu.com/img/flexible/logo/pc/result.png'
+      })
+    },
+    toastTimeout (e) {
+      const text = e.target.innerText
+      const timeout = parseInt(text.match(/\((\S*)\)/)[1])
+      console.log(timeout)
+      this.$toast({
+        msg: text,
+        timeout: timeout
+      })
+    },
+    toastCancel () {
+      this.$toast({
+        hasCancel: true
+      })
+    },
+
     listenWinClick (e) {
       const target = e.target
       const state = target.classList.contains('menu') || target.parentElement.classList.contains('menu')
@@ -942,6 +1093,7 @@ export default {
     }
   },
   created() {
+
     // 在手机类型设备点击菜单按钮进行弹出菜单栏
     window.addEventListener('click', this.listenWinClick, true)
     window.addEventListener('resize', this.listenWinScreen, true)
