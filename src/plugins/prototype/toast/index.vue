@@ -41,9 +41,9 @@ export default {
       typeof cb === 'function' && cb.call(this, this)
 
       if (this.timeout) {
-        let timeId = setTimeout(() => {
+        this.toastTimeId = setTimeout(() => {
           this.hide();
-          timeId = null;
+          this.toastTimeId = null;
         }, this.timeout);
       }
 
@@ -52,8 +52,11 @@ export default {
     hide () {
       const { position, toastTag, $el, $refs } = this;
       const wrap = document.querySelector(`#toast_${position}_wrap`)
+  
+      if (wrap) {
+        wrap.childElementCount > 1 ? wrap.removeChild($el) : document.body.removeChild(wrap)
+      }
       
-      wrap.childElementCount > 1 ? wrap.removeChild($el) : document.body.removeChild(wrap)
 
       // 销毁组件依赖
       this.$destroy()

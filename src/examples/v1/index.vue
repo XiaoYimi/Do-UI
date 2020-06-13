@@ -952,6 +952,85 @@
               </div>
             </section>
           </template>
+
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>position</td>
+                  <td>显示位置</td>
+                  <td>String</td>
+                  <td>top, right, bottom, left, center</td>
+                  <td>top</td>
+                </tr>
+                <tr>
+                  <td>type</td>
+                  <td>类型</td>
+                  <td>String</td>
+                  <td>default, success, error, warning, infi</td>
+                  <td>default</td>
+                </tr>
+                <tr>
+                  <td>isCustomIcon</td>
+                  <td>是否自定义图标</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>customIconUrl</td>
+                  <td>图标路径(http(s)),isCustomIcon 必须为 true</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>''</td>
+                </tr>
+                <tr>
+                  <td>timeout</td>
+                  <td>显示时间</td>
+                  <td>Number</td>
+                  <td>--</td>
+                  <td>3000</td>
+                </tr>
+                <tr>
+                  <td>hasCancel</td>
+                  <td>是否显示关闭按钮</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>false</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Events</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>--</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
         </temp>
 
 
