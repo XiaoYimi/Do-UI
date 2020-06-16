@@ -14,7 +14,7 @@ import 'doui/lib/doui.css'
 Vue.use(doui)
 
 # 组件使用示例
-<do-button>按钮</do-button>
+&lt;do-button&gt;按钮&lt;/do-button&gt;
 
 
 # 运行项目
