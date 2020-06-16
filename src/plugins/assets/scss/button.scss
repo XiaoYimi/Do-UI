@@ -34,7 +34,9 @@ $black: #000;
 
 .do-button {
   box-sizing: border-box;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0 10px;
   border-radius: 5px;

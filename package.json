@@ -2,12 +2,12 @@
   "name": "do-ui",
   "version": "1.0.0",
   "description": "Do UI",
-  "main": "./src/,ain.js",
+  "main": "lib/doui.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode=development --config ./build/webpack.config.js",
     "build": "webpack --mode=production --config ./build/webpack.config.js",
-    "package": "webpack --mode=production --config ./build/webpack.config.js"
+    "package": "webpack --mode=production --config ./build/webpack.npm.config.js"
   },
   "keywords": [
     "Vue",
@@ -22,6 +22,7 @@
     "babel-loader": "^7.1.5",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.0.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
