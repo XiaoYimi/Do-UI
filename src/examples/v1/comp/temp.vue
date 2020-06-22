@@ -77,6 +77,7 @@ export default {
         font-size: 14px;
         font-weight: bold;
         white-space: pre-line;
+        overflow-wrap: break-word;
         background-color: #e0edff;
       }
       .example-instance-tip {
@@ -101,7 +102,7 @@ export default {
             box-sizing: border-box;
             border-bottom: 1px solid #dcdfe6;
             padding: 12px;
-            max-width: 250px;
+            max-width: 200px;
             text-align: left;
 
             &:first-child { padding-left: 0; }

@@ -908,7 +908,9 @@
                 &lt;script&gt;
                   this.$toast({
                   &nbsp;&nbsp; isCustomIcon: true,
-                  &nbsp;&nbsp; customIconUrl: 'https://www.baidu.com/img/flexible/logo/pc/result.png'
+                  &nbsp;&nbsp; customIconUrl: 'https://www.
+                  &nbsp; baidu.com/img/
+                  &nbsp; flexible/logo/pc/result.png'
                   })
                 &lt;/script&gt;
               </div>
@@ -989,7 +991,7 @@
                 </tr>
                 <tr>
                   <td>customIconUrl</td>
-                  <td>图标路径(http(s)),isCustomIcon 必须为 true</td>
+                  <td>图标路径,isCustomIcon 必须为 true</td>
                   <td>String</td>
                   <td>--</td>
                   <td>''</td>
