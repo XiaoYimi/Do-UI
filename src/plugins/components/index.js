@@ -15,10 +15,14 @@ const Radio = require('./radio/index.vue')
 /* 复选框 */
 const Checkbox = require('./checkbox/index.vue')
 
+/* 下拉框 */
+const Select = require('./select/index.vue')
+
 module.exports = {
   Button,
   Link,
   Switch,
   Radio,
-  Checkbox
+  Checkbox,
+  Select
 }

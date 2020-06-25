@@ -848,6 +848,199 @@
         
         </temp>
 
+        <temp id="Select" comp-title="Checkbox 复选框">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Select } from 'do-ui';
+
+            Vue.use(Select);
+          </template>
+
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Select 颜色</div>
+              <div class="example-instance-column">
+                <do-select @select="select" />
+                <do-select type="red" @select="select" />
+                <do-select type="orange" @select="select" />
+                <do-select type="green" @select="select" />
+                <do-select type="blue" :index="2" @select="select" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-select @select="select" /&gt;
+                &lt;do-select type="red" @select="select" /&gt;
+                &lt;do-select type="orange" @select="select" /&gt;
+
+                &lt;script&gt;
+
+                在 data 对象定义属性
+                index: NaN | number, // NaN(无默认), 默认选中值
+                // 选项列表
+                options: [
+                &nbsp; {
+                  &nbsp;&nbsp;  label: '', // 显示值
+                  &nbsp;&nbsp;  value: '', // 选中值,
+                  &nbsp;&nbsp;  disabled: true | false, // 是否禁用
+                &nbsp; }
+                ]
+                
+                在 methods 内定义方法
+
+                select (obj) {
+                &nbsp;  &nbsp;  const { index, label, value } = obj;
+                &nbsp; &nbsp; console.log(index, label, value);
+                },
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                下拉框颜色(<code>type</code>)支持 <code>default</code>, <code>red</code>, <code>orange</code>, <code>green</code>, <code>blue</code> 等, 默认 <code>default</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Select 默认值</div>
+              <div class="example-instance-column">
+                <do-select :index="1" @select="select" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-select :index="1" @select="select"/&gt;
+
+                &lt;script&gt;
+
+                在 data 对象定义属性
+                index: NaN | number, // NaN(无默认), 默认选中值
+                // 选项列表
+                options: [
+                &nbsp; {
+                  &nbsp;&nbsp;  label: '', // 显示值
+                  &nbsp;&nbsp;  value: '', // 选中值,
+                  &nbsp;&nbsp;  disabled: true | false, // 是否禁用
+                &nbsp; }
+                ]
+                
+                在 methods 内定义方法
+
+                select (obj) {
+                &nbsp;  &nbsp;  const { index, label, value } = obj;
+                &nbsp; &nbsp; console.log(index, label, value);
+                },
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                下拉框默认值(<code>index</code>): 只有<code>NaN (无默认)</code> 与 <code>数值</code> 相等;默认<code>NaN</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Select 选项禁用</div>
+              <div class="example-instance-column">
+                <do-checkbox name="cg3" label="pear" text="Pear" :disabled="true" @change="checkboxChange" />
+                <do-checkbox name="cg3" label="apple" value="apple" text="Apple" :disabled="true" @change="checkboxChange" />
+              </div>
+              <div class="example-instance-source">
+                &lt;do-checkbox name="cg3" label="pear" text="Pear" :disabled="true" @change="checkboxChange"/&gt;
+                &lt;do-checkbox name="cg3" label="apple" value="apple" text="Apple" :disabled="true" @change="checkboxChange"/&gt;
+
+                &lt;script&gt;
+
+                在 data 对象定义属性
+                index: NaN | number, // NaN(无默认), 默认选中值
+                // 选项列表
+                options: [
+                &nbsp; {
+                  &nbsp;&nbsp;  label: '', // 显示值
+                  &nbsp;&nbsp;  value: '', // 选中值,
+                  &nbsp;&nbsp;  disabled: true | false, // 是否禁用
+                &nbsp; }
+                ]
+                
+                在 methods 内定义方法
+
+                select (obj) {
+                &nbsp;  &nbsp;  const { index, label, value } = obj;
+                &nbsp; &nbsp; console.log(index, label, value);
+                },
+                &lt;script&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                复选框禁用(<code>options[index].disabled</code>)支持 <code>Boolean</code> 类型值,无默认设置.
+              </div>
+            </section>
+          </template>
+
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>type</td>
+                  <td>下拉框类型</td>
+                  <td>String</td>
+                  <td>default, red, orange, green, blue</td>
+                  <td>default</td></td>
+                </tr>
+                <tr>
+                  <td>index</td>
+                  <td>默认索引值</td>
+                  <td>Number</td>
+                  <td>NaN, number</td>
+                  <td>NaN</td>
+                </tr>
+                <tr>
+                  <td>text</td>
+                  <td>显示的文本</td>
+                  <td>String</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <td>options[index].disabled</td>
+                  <td>是否禁用</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Events</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>change</td>
+                  <td>切换状态</td>
+                  <td>{group, checkboxId, value, state}</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        
+        </temp>
+
+
+        <!-- prototype 方法 -->
+
         <temp id="Toast" comp-title="Toast 信息">
           <template v-slot:install>
             import Vue from 'vue';
@@ -1066,7 +1259,8 @@ export default {
             { name: 'Link 文字链接', href: '#Link' },
             { name: 'Switch 开关', href: '#Switch' },
             { name: 'Radio 单选框', href: '#Radio' },
-            { name: 'Checkbox 复选框', href: '#Checkbox' }
+            { name: 'Checkbox 复选框', href: '#Checkbox' },
+            { name: 'Select 下拉框', href: '#Select' }
           ]
         },
         {
@@ -1106,6 +1300,11 @@ export default {
         this.checkboxOption = this.checkboxOption.filter(item => item !== value)
       }
       
+    },
+
+    /* Select Events */
+    select (obj) {
+      console.log(obj)
     },
 
     /* Toast Events */
