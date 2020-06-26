@@ -1,0 +1,67 @@
+$defColor: #333333;
+$white: #ffffff;
+
+$light-gray: #ddd;
+$green: #07c160;
+$red: #ee0a24;
+$blue: #1989fa;
+$orange: #ff976a;
+$black: #000;
+
+
+.do-carousel {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  
+  &-container {
+    box-sizing: border-box;
+    position: relative;
+    height: 300px;
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      background-color: rgba(25,25,25,.23);
+      transform: translateY(-50%);
+      z-index: 10;
+      cursor: pointer;
+
+      &-left { left: 20px; }
+      &-right { right: 20px; }
+      
+      svg { path { fill: $white; } }
+    }
+
+    .indicator {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      transform: translateX(-50%);
+      list-style: none;
+
+      &-item {
+        margin: 0 4px;
+        width: 24px;
+        height: 2px;
+        background-color: rgba(31, 45, 61, 0.23);
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      &-item-on { background-color: $blue; }
+    }
+  }
+}

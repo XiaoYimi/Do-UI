@@ -1038,6 +1038,296 @@
         
         </temp>
 
+        <temp id="Carousel" comp-title="Carousel 走马灯">
+          <template v-slot:install>
+            import Vue from 'vue';
+            import { Carousel, CarouselItem } from 'do-ui';
+
+            Vue.use(Carousel).use(CarouselItem);
+          </template>
+          <template v-slot:demonstration>
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 方向</div>
+              <div class="example-instance-column">
+                <p>Horizonal</p>
+                <do-carousel>
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+
+                <p>Vertical</p>
+                <do-carousel direction="vertical">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel direction="vertical" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Carousel 方向(<code>direction</code>)支持 <code>horizonal</code>, <code>vertical</code>, 默认 <code>horizonal</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 默认索引</div>
+              <div class="example-instance-column">
+                <do-carousel :index="2">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel :index="2" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+                
+              </div>
+              <div class="example-instance-tip">
+                Carousel 默认索引(<code>index</code>)支持 <code>Number</code>类型值, 不能小于 0 或大于 do-carousel-item 节点数, 默认<code>0</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 动画类型</div>
+              <div class="example-instance-column">
+                <do-carousel animate="linear">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel direction="vertical" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+                
+              </div>
+              <div class="example-instance-tip">
+                Carousel 动画类型(<code>animate</code>)支持 <code>ease-in-out</code>, <code>linear</code>, <code>ease</code>, <code>ease-in</code>, <code>ease-out</code>等, 默认 <code>ease-in-out</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 自动切换</div>
+              <div class="example-instance-column">
+                <p>禁止自动切换(autoplay = false)</p>
+                <do-carousel :autoplay="false">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel :autoplay="false" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Carousel 自动切换(<code>autoplay</code>)支持 <code>Boolean</code> 类型值, 默认 <code>true</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 切换的方向</div>
+              <div class="example-instance-column">
+                <p>切换的方向(slideArrow ='left')</p>
+                <do-carousel slideArrow="left">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel  slide-arrow="left" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Carousel 切换的方向(<code>slideArrow</code>)支持 <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, direction=vertical 采用 top, bottom, direction=horizonal 采用 left, right, 默认 <code>right</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 切换时间间隔</div>
+              <div class="example-instance-column">
+                <do-carousel :interval="1000">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel  :interval="1000" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Carousel 切换时间间隔(<code>interval</code>)支持 <code>数值</code>, 单位毫秒(ms) 默认 <code>2500</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 指示器</div>
+              <div class="example-instance-column">
+                <do-carousel :show-indicator="false">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel  :show-indicator="false" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Carousel 指示器(<code>showIndicator</code>)支持 <code>Boolean</code> 类型值, 默认 <code>true</code>.
+              </div>
+            </section>
+
+            <section class="example-instance-block">
+              <div class="example-instance-title">Carousel 箭头按钮</div>
+              <div class="example-instance-column">
+                <do-carousel :show-arrow="false">
+                  <do-carousel-item v-for="(item) of 5" :key="item">
+                    <h1>{{ item }}</h1>
+                  </do-carousel-item>
+                </do-carousel>
+              </div>
+              <div class="example-instance-source">
+                &lt;do-carousel :show-arrow="false" &gt;
+                &nbsp; &lt;do-carousel-item  v-for="(item) of 5" :key="item"&gt;
+                &nbsp; &nbsp; &lt;h1&gt; { {item } } &lt;h1/&gt;
+                &nbsp; &lt;do-carousel-item/&gt;
+                &lt;do-carousel/&gt;
+
+              </div>
+              <div class="example-instance-tip">
+                Carousel 箭头按钮(<code>showIndicator</code>)支持 <code>Boolean</code> 类型值, 默认 <code>true</code>.
+              </div>
+            </section>
+
+          </template>
+          
+          <template v-slot:api-attr-table>
+            <div class="example-instance-title">Attributes</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>说明</th>
+                  <th>类型</th>
+                  <th>可选值</th>
+                  <th>默认值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>direction</td>
+                  <td>布局方向</td>
+                  <td>String</td>
+                  <td>horizonal, vertical</td>
+                  <td>horizonal</td>
+                </tr>
+                <tr>
+                  <td>index</td>
+                  <td>默认索引</td>
+                  <td>Number</td>
+                  <td>--</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>animate</td>
+                  <td>动画类型</td>
+                  <td>String</td>
+                  <td>ease-in-out, linear, ease, ease-in, ease-out</td>
+                  <td>ease-in-out</td>
+                </tr>
+                <tr>
+                  <td>autoplay</td>
+                  <td>自动切换</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>slideArrow</td>
+                  <td>切换方向</td>
+                  <td>String</td>
+                  <td>top, bottom, left, right</td>
+                  <td>right</td>
+                </tr>
+                <tr>
+                  <td>interval</td>
+                  <td>切换间隔</td>
+                  <td>Number</td>
+                  <td>--</td>
+                  <td>2500</td>
+                </tr>
+                <tr>
+                  <td>showIndicator</td>
+                  <td>显示指示器</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>showArrow</td>
+                  <td>显示箭头按钮</td>
+                  <td>Boolean</td>
+                  <td>--</td>
+                  <td>true</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+
+          <template v-slot:api-event-table>
+            <div class="example-instance-title">Event</div>
+            <table class="example-api-table">
+              <thead>
+                <tr>
+                  <th>事件名称</th>
+                  <th>说明</th>
+                  <th>回调参数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>change</td>
+                  <td>Carousel 切换</td>
+                  <td>index</td>
+                </tr>
+              </tbody>
+            </table>
+          </template>
+        </temp>
+
 
         <!-- prototype 方法 -->
 
@@ -1260,7 +1550,8 @@ export default {
             { name: 'Switch 开关', href: '#Switch' },
             { name: 'Radio 单选框', href: '#Radio' },
             { name: 'Checkbox 复选框', href: '#Checkbox' },
-            { name: 'Select 下拉框', href: '#Select' }
+            { name: 'Select 下拉框', href: '#Select' },
+            { name: 'Carousel 走马灯', href: '#Carousel' },
           ]
         },
         {

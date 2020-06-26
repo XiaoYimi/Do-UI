@@ -18,11 +18,18 @@ const Checkbox = require('./checkbox/index.vue')
 /* 下拉框 */
 const Select = require('./select/index.vue')
 
+/* 走马灯(轮播图) */
+const Carousel = require('./carousel/index.vue')
+
+const CarouselItem = require('./carousel-item/index.vue')
+
 module.exports = {
   Button,
   Link,
   Switch,
   Radio,
   Checkbox,
-  Select
+  Select,
+  Carousel,
+  CarouselItem,
 }
